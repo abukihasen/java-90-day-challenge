@@ -1,54 +1,56 @@
 import java.util.Scanner;
 public class GradeCalc {
-     public static void main(String[] args ){
-        Scanner input=new Scanner(System.in);
-        System.out.println("==Welcome to Grade Calculator==");
-        for (int i=0;i<5;i++) {
-            System.out.println("Student "+ (i + 1));
-            System.out.print("Enter your grade: ");
-            double score;
+     public static void main(String[] args ) {
+         Scanner input = new Scanner(System.in);
+         System.out.println("==Welcome to Grade Calculator==");
+         double mark=-1.0;
+         char grade;
+
+        
+         for (int i = 0; i < 5; i++) {
+             System.out.println("Subject " + (i + 1));
+             do {
+                 System.out.print("Enter your Exam Mark [0-100]: ");
+                 if (input.hasNextDouble()) {
+                     mark = input.nextDouble();
+                     if (mark < 0 || mark > 100) {
+                         System.out.println(" X Invalid! Mark must be between 0 and 100\n");
+                     }
+                 }else {
+                     System.out.println("Invalid! input please Enter a valid numeric value");
+                     mark=-1;
+                     input.next();
+
+                 }
+                 }while (mark < 0 || mark > 100);
 
 
-            score = input.nextDouble();
-            boolean passed = false;
-            char grade;
-            while (!passed) {
-                if (score < 0 || score > 100) {
-                    System.out.println(" X Invalid Score  please try again");
+                     if (mark >= 90) {
+                         grade = 'A';
+                     } else if (mark >= 80) {
+                         grade = 'B';
+                     } else if (mark >= 70) {
+                         grade = 'C';
+                     } else if (mark >= 60) {
+                         grade = 'D';
+                     } else {
+                         grade = 'F';
+                     }
+                 switch (grade) {
+                     case 'A' -> System.out.println("Distinction! Outstanding performance");
 
-                    System.out.print("Enter your grade: ");
-                    score = input.nextDouble();
-                } else {
-                    passed = true;
-                }
-            }
+                     case 'B' -> System.out.println("Very good, Upper Division pass.");
 
-            if (score >= 90) {
-                grade = 'A';
-            } else if (score >= 80) {
-                grade = 'B';
-            } else if (score >= 70) {
-                grade = 'C';
-            } else if (score >= 60) {
-                grade = 'D';
-            } else {
-                grade = 'F';
-            }
-            switch (grade) {
-                case 'A' -> System.out.println("Excellent, your grade is  A");
+                     case 'C' -> System.out.println("satisfactory pass");
 
+                     case 'D' -> System.out.println("Conditional pass. Support Recommended");
 
-                case 'B' -> System.out.println("Very good, your grade is  B");
+                     case 'F' -> System.out.println("Unsatisfactory. Academic re-evaluation required");
 
-                case 'C' -> System.out.println("Good, your grade is  C");
+                     default -> System.out.println("!error");
+                 }
 
-                case 'D' -> System.out.println("not bad , your grade is  D");
-
-                case 'F' -> System.out.println("Try next , your grade is  F");
-
-                default -> System.out.println("!error");
-            }
-        }
-        input.close();
-    }
-}
+             }
+         input.close();
+         }
+     }
