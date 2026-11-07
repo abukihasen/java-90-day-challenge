@@ -31,3 +31,6 @@ bin/
 
 .idea/
 *.iml
+
+# Compiled Java files
+*.class
