@@ -34,6 +34,10 @@ public class TextTools {
             throw new IllegalArgumentException(" sentence cannot be empty or null");
         }
         String cleanText=sentence.strip();
+
+        if (cleanText.isEmpty()) {
+            throw new IllegalArgumentException("Sentence cannot be blank");
+        }
         int count=0;
         for (String word : cleanText.split("\\s+")){
             count++;
@@ -62,7 +66,12 @@ public class TextTools {
         System.out.println(countWords(text3));
         System.out.println(countWords("I love programming"));
         System.out.println(countWords(" Java   is   powerful"));
-        System.out.println(countWords("   "));
+        try {
+            System.out.println(countWords("   "));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
 
 
     }
