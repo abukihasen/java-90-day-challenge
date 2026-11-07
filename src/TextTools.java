@@ -29,11 +29,25 @@ public class TextTools {
 
 
     }
+    public static int countWords(String sentence){
+        if (sentence==null ||sentence.isEmpty()){
+            throw new IllegalArgumentException(" sentence cannot be empty or null");
+        }
+        String cleanText=sentence.strip();
+        int count=0;
+        for (String word : cleanText.split("\\s+")){
+            count++;
+        }
+
+        return count;
+    }
+
 
     public static void main(String[] args) {
         String name= "abuki";
         String name1 = "level";
         String name2 ="Madam";
+        String text3="A man, a plan, a canal: Panama";
         System.out.println(isPalinDrome(name));
         System.out.println(isPalinDrome(name1));
         System.out.println(isPalinDrome(name2));
@@ -43,6 +57,13 @@ public class TextTools {
         System.out.println(isAnagram("listen", "silent"));
         System.out.println(isAnagram("hello", "world"));
         System.out.println(isAnagram("Heart", "Earth"));
+
+        System.out.println("countWords");
+        System.out.println(countWords(text3));
+        System.out.println(countWords("I love programming"));
+        System.out.println(countWords(" Java   is   powerful"));
+        System.out.println(countWords("   "));
+
 
     }
 }
