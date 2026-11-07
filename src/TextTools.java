@@ -1,5 +1,5 @@
 
-
+import java.util.Arrays;
 public class TextTools {
 
     public static boolean isPalinDrome(String text){
@@ -10,6 +10,25 @@ public class TextTools {
         return text.equalsIgnoreCase(string.reverse().toString());
     }
 
+    public static boolean isAnagram(String first, String second){
+        if (first==null||first.isEmpty() || second==null||second.isEmpty()){
+            throw new IllegalArgumentException("String cannot be empty or null");
+        }
+
+        if (first.length()!=second.length()){
+            return false;
+        }
+        first=first.toLowerCase();
+        second=second.toLowerCase();
+        char[] firstArray=first.toCharArray();
+        char[] secondArray=second.toCharArray();
+        Arrays.sort(firstArray);
+        Arrays.sort(secondArray);
+
+        return Arrays.equals(firstArray,secondArray);
+
+
+    }
 
     public static void main(String[] args) {
         String name= "abuki";
@@ -19,6 +38,11 @@ public class TextTools {
         System.out.println(isPalinDrome(name1));
         System.out.println(isPalinDrome(name2));
 
+        System.out.println("Anagram Check");
+        System.out.println(isAnagram("carmon", "moncar"));
+        System.out.println(isAnagram("listen", "silent"));
+        System.out.println(isAnagram("hello", "world"));
+        System.out.println(isAnagram("Heart", "Earth"));
 
     }
 }
