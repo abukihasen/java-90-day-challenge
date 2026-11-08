@@ -16,6 +16,7 @@ public class TextTools {
         }
 
         if (first.length()!=second.length()){
+
             return false;
         }
         first=first.toLowerCase();
